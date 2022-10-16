@@ -27,10 +27,9 @@ app.use(session({
 
 
   // db.user.create({
-  //   name:"adminUser",
+  //   name:"utkarsh",
   //   email:"admin@amazon.com",
   //   password:"qwerty123",
-  //   isAdmin:true
   // })
 
   db.user.findAll()

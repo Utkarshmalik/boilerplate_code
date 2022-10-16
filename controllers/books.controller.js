@@ -5,8 +5,19 @@ const User = db.user;
 exports.create=async (req,res)=>{
 
     const {name,author}=req.body;
+    const {userId} = req.params;
 
 
+    const user= await User.findByPk(userId);
+
+    if(!user){
+        return  res.status(400).send({message:"Invalid user"});
+    }
+
+    if(!user.isAdmin){
+        return res.status(403).send({message:"Only admin users are allowed to perform this operation"});
+        
+    }
 
     const book={
         name,author,addedOn:Date.now()
